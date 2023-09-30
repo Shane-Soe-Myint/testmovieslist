@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #343a40;
+}
+
+.singleMovieMain {
+    width: 60%;
+    margin: 2% auto;
+}
+
+.singleNavBarContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.singleMovieCloseBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: -.5%;
+    cursor: pointer;
+}
+
+.singleImgTitle {
+    margin-right: -5%;
+    background-color: #343a40;
+}
+
+.singleImg {
+    width: 150px;
+    height: 210px;
+    float: left;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    margin-right: 18px;
+}
+
+.singleMovieMain h1 {
+    font-size: 350%;
+}
+
+.download {
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    overflow: hidden;
+}
+
+.download:hover {
+    opacity: .7;
+}
+
+.download:hover .fa-circle-down {
+    transition: all .4s ease-in-out;
+    transform: translateY(250%);
+}
+
+.fa-download {
+    transition: all .4s ease-in-out;
+    margin-left: 5px;
+    transform: translateY(-250%);
+}
+
+.download:hover .fa-download {
+    transform: translateY(0%);
+}
+
+@media (max-width: 1300px) {
+    .singleMovieMain h1 {
+        font-size: 300%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .singleMovieMain h1 {
+        font-size: 200%;
+    }
+}
+
+@media (max-width: 900px) {
+    .singleMovieMain h1 {
+        font-size: 185%;
+    }
+}
+
+@media (max-width: 575px) {
+    .singleImg {
+        float: none;
+    }
+    .singleMovieMain h1 {
+        font-size: 160%;
+    }
+}

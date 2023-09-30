@@ -1,0 +1,702 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.main {
+    padding: 20px;
+    margin: 40px auto;
+    height: 100vh;
+}
+
+.navBarContainer {
+    position: sticky;
+    top: 0;
+    background-color: rgb(41, 40, 40);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.navBarContainer::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(rgba(255,255,255, .3), rgba(255,255,255, 0.1));
+    border-radius: 5px;
+}
+
+.addNavBar {
+    height: 10%;
+    background-color: green;
+    margin-top: -35px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeBtn {
+    position: relative;
+    left: 40%;
+    width: 170px;
+    height: 30px;
+    background-image: linear-gradient(rgb(129, 245, 135), rgb(131, 243, 224));
+    border: none;
+    border-radius: 5px;
+    color: blue;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.homeBtn::after {
+    content: "";
+    background-image: linear-gradient(rgba(255,255,255, 0.8), rgba(255,255,255, 0.3));
+    height: 50%;
+    width: 100%;
+    left: -0%;
+    position: absolute;
+    top: 1px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.homeBtn:hover {
+    background-image: linear-gradient(rgb(131, 243, 224), rgb(72, 247, 80) );
+}
+
+.movieChangeBtn {
+    color: #000;
+    background-color: lightgray;
+    width: 5px;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.movieChangeBtn:hover {
+    background-image: linear-gradient(to top, hsl(231, 100%, 48%), hsl(192, 70%, 51%));
+}
+
+.movieChangeBtn > img {
+    width: 20px;
+    margin-bottom: -3px;
+}
+
+.movieChangeBox {
+    width: 100px;
+    height: 40px;
+    padding: 2px;
+    margin-left: 5px;
+    margin-top: -10px;
+    text-align: center;
+    background-color: gray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 8px;
+    display: none;
+    position: relative;
+    z-index: 100;
+}
+
+.displayShowMovieList {
+    display: inline-block;
+}
+
+.v_:hover {
+    text-decoration: underline;
+}
+
+.searchMain {
+    width: 30%;
+    position: absolute;
+    margin-left: 10%;
+    left: 310px;
+    z-index: 99;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    margin-left: 5px;
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    border-bottom: 1px dotted lightgray;
+}
+
+.searchListContainer {
+    /* height: 310px; */         /*<-- *********************/
+    width: 100%;
+    margin-left: 5px;
+    overflow-y: scroll; /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .searchListContainer::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.searchListContainer {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  background-color: #fff;
+}
+
+.searchList {
+    display: flex;
+    align-items: center;
+    color: #000;
+    background-color: #fff;
+    border-bottom: 1px dotted lightgray;
+    padding: 12px 10px;
+    font-size: 16px;
+    list-style: none;
+    cursor: pointer;
+    /* overflow: hidden; */
+    /* white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+
+.searchList:hover {
+    background-image: linear-gradient(to top, hsl(191, 79%, 95%), hsl(0, 0%, 100%));
+}
+
+.navBarRight {
+    position: absolute;
+    right: 10px;
+}
+
+.hamburgerIconContainer {
+    position: relative;
+    bottom: -5px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 103;
+}
+
+.hamburgerIconContainerFoucs {
+    background-image: linear-gradient(rgb(147, 147, 148), rgb(0,0,0));
+    position: absolute;
+    border-radius: 5px;
+}
+
+.hamburgerIconContainerFoucs::after {
+    content: "";
+    position: absolute;
+    background-color: rgba(211, 211, 211, 0.253);
+    top: 0;
+    width: 100%;
+    height: 50%;
+    border-radius: 3px;
+}
+
+.hamburger {
+    width: 35px;
+    height: 3px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all .4s ease-in-out;
+    position: relative;
+    z-index: 106;
+}
+
+/* .hamburgerContainer.open > div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburgerContainer.open > div:nth-child(1) {
+    transform: translate(4px, 6px) rotate(45deg);
+}
+
+.hamburgerContainer.open > div:nth-child(3) {
+    transform: translate(4px, -9.5px) rotate(-45deg);
+} */
+
+/* .open {
+    display: block;
+} */
+
+/* .overLayContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgba(165, 165, 165, 0.75), rgba(59, 59, 59, 0.85));
+    z-index: 102;
+} */
+
+.overLayMenu {
+    /* background-image: linear-gradient(rgba(78,0,225,0.75), rgba(7,0,60,0.85)); */
+    background-color: #000;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    width: 500px;
+    right: 0px;
+    top: -10px;
+    padding-top: 20px;
+    z-index: 100;
+}
+
+.overLayMenu > div {
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.overLayMenu > div:hover {
+    text-decoration: underline;
+}
+
+.overLayNone {
+    transition: all .4s ease-in-out;
+    display: none;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 12px;
+    margin: 0 auto;
+}
+
+.moviesContainer {
+    text-align: center;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(6, 1fr);
+    position: relative;
+}
+
+.moviesRating {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.moviesRating::before, .moviesRating::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: lightgreen;
+    opacity: .6;
+}
+
+.moviesRating::before {
+    left: 0;
+    bottom: 0;
+}
+
+.moviesRating::after {
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.moviesRating > div {
+    font-size: 12px;
+    font-weight: 600;
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 18px;
+    width:  100px;
+    left: -31px;
+    bottom: 23px;
+    transform: rotate(-45deg);
+    background-color: lightgreen;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movieQuality {
+    position: absolute;
+    right: 0;
+}
+
+.movieQuality > div {
+    font-size: 14px;
+    width: 41px;
+    background-color: red;
+}
+
+.fa-star {
+    font-size:8px;
+    margin-top:-3px;
+    margin-right:1px;
+    color: blue;
+}
+
+.movieList {
+    width: 185px;
+    height: 250px;
+    border: 1px dotted lightgray;
+    /* overflow: hidden; */
+}
+
+.movieList:hover {
+    transform: scale(1.03);
+    transition: all .4s ease-in-out;
+}
+
+img {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 100%;
+}
+
+.h4Title {
+    overflow: hidden;
+    width: 145px;
+    margin: 0 auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+
+.years {
+    margin: 0 auto;
+}
+
+.pageNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    position: relative;
+}
+
+.pageNumbers > li {
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    padding: 20px;
+    border: 1px dotted gray;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.pageNumbers > button {
+    border: none;
+    padding: 10px;
+}
+
+.activeNumColor {
+    background-color: #fff;
+    color: #000;
+}
+
+.nextBtn, .backBtn {
+    opacity: .7;
+    box-shadow: 1px 2px 1px rgb(175, 175, 175);
+    color: #000;
+    padding: 4px;
+    position: absolute;
+    background-color: lightgreen;
+    cursor: default;
+}
+
+.nextBtn {
+    right: 10px;
+}
+
+.backBtn {
+    left: 10px;
+}
+
+.nextBtn:hover, .backBtn:hover {
+    opacity: 1;
+    transition: all .4s ease-in-out;
+}
+
+@media (max-width: 1360px) {
+    .movieList {
+        width: 175px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 1320px) {
+    .movieList {
+        width: 170px;
+        height: 235px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .movieList {
+        width: 165px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 1270px) {
+    .movieList {
+        width: 160px;
+        height: 225px;
+    }
+}
+
+@media (max-width: 1245px) {
+    .movieList {
+        width: 155px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 1220px) {
+    .movieList {
+        width: 150px;
+        height: 215px;
+    }
+}
+
+@media (max-width: 1195px) {
+    .movieList {
+        width: 145px;
+        height: 210px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .movieList {
+        width: 140px;
+        height: 205px;
+    }
+}
+
+@media (max-width: 1115px) {
+    .moviesContainer {
+        grid-gap: 10px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .movieList {
+        width: 175px;
+        height: 240px;
+    }
+    a {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 830px) {
+    .moviesContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .movieList {
+        width: 180px;
+        height: 256px;
+    }
+    .searchMain {
+        margin-left: 2%;
+    }
+}
+
+@media (max-width: 630px) {
+    .searchMain {
+        margin-left: -5%;
+    }
+    .movieList {
+        width: 170px;
+        height: 235px;
+    }
+    .searchList {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 595px) {
+    .movieList {
+        width: 160px;
+        height: 225px;
+    }
+    .searchList {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 585px) {
+    .movieList {
+        width: 150px;
+        height: 210px;
+    }
+    .searchMain {
+        margin-left: -10%;
+    }
+}
+
+@media (max-width: 570px) {
+    .main {
+        padding: 10px;
+        margin: 50px auto;
+    }
+    .searchMain {
+        margin-left: -10%;
+    }
+    .searchList {
+        font-size: 13.2px;
+    }
+    .movieList {
+        width: 145px;
+        height: 206px;
+    }
+    h4 {
+        width: 145px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 501px) {
+    .searchMain {
+        margin-left: -20%;
+    }
+    .searchList {
+        font-size: 13px;
+    }
+    .hamburger {
+        width: 28px;
+    }
+}
+
+@media (max-width: 489px) {
+    .moviesContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .movieList {
+        width: 215px;
+        height: 300px;
+    }
+    .overLayMenu {
+        width: 250px;
+    }
+}
+
+@media (max-width: 436px) {
+    .moviesContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .movieList {
+        width: 170px;
+        height: 250px;
+    }
+    h1 {
+        font-size: 22px;
+    }
+    .searchMain {
+        width: 25%;
+        margin-left: -30%;
+        left: 310px;
+        z-index: 99;
+    }
+    .searchInput {
+        width: 100%;
+        height: 30px;
+        font-size: 14px;
+    }
+    .movieChangeBox {
+        width: 110px;
+        height: 60px;
+    }
+    .hamburgerIcon {
+        width: 40px;
+    }
+}
+
+@media (max-width: 375px) {
+    .homeBtn {
+        left: 25%;
+    }
+    h1 {
+        margin-top: 10px;
+    }
+    .searchMain {
+        width: 30%;
+        left: 70%;
+        margin-top: -5px;
+    }
+    .hamburgerIconContainer {
+        width: 35px;
+        margin-top: -5px;
+        z-index: 110;
+    }
+}
+
+@media (max-width: 280px) {
+    .homeBtn {
+        left: 15%;
+    }
+    h1 {
+        margin-top: 10px;
+    }
+    .moviesContainer {
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 20px;
+    }
+    .movieList {
+        width: 215px;
+        height: 300px;
+    }
+    .movieChangeBox {
+        width: 110px;
+        height: 50px;
+        margin-bottom: -15px;
+    }
+    .movieChangeBox  a > h1 {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    .searchMain {
+        width: 35%;
+        left: 70%;
+        margin-top: -4px;
+    }
+    .hamburgerIconContainer {
+        width: 35px;
+        margin-top: -5px;
+        z-index: 110;
+    }
+    .pageNumbers > li {
+        list-style: none;
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        border: 1px dotted gray;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3px;
+        cursor: pointer;
+    }
+}
